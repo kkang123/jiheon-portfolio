@@ -19,6 +19,7 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
+    // 스크롤 이벤트가 너무 자주 발생해서 passive 옵션으로 성능 최적화
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -28,7 +29,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-md border-b border-(--border)" : ""
+        scrolled ? "backdrop-blur-sm border-b border-(--border)" : ""
       }`}
       style={
         scrolled
