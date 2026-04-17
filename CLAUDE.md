@@ -1,6 +1,6 @@
-# CLAUDE.md - jihean-portfolio
+# CLAUDE.md - jiheon-portfolio
 
-이 파일은 Claude가 jihean-portfolio 프로젝트를 도울 때 참고하는 가이드입니다.
+이 파일은 Claude가 jiheon-portfolio 프로젝트를 도울 때 참고하는 가이드입니다.
 
 ---
 
@@ -62,7 +62,7 @@
 ## 폴더 구조
 
 ```
-jihean-portfolio/
+jiheon-portfolio/
 ├── app/
 │   ├── layout.tsx          # ThemeProvider, 폰트, 글로벌 메타태그
 │   ├── page.tsx            # 섹션 조합 (Hero, About, Skills, Projects, Contact)

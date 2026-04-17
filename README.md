@@ -2,7 +2,7 @@
 
 포트폴리오 사이트
 
-# jihean-portfolio
+# jiheon-portfolio
 
 포트폴리오 사이트
 
@@ -26,7 +26,7 @@ npm install next-themes framer-motion
 ## 📁 폴더 구조
 
 ```bash
-jihean-portfolio/
+jiheon-portfolio/
 ├── app/
 │   ├── layout.tsx          # ThemeProvider, 폰트, 메타태그
 │   ├── page.tsx            # 메인 (섹션 조합)
