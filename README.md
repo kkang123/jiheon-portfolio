@@ -2,9 +2,7 @@
 
 포트폴리오 사이트
 
-# jiheon-portfolio
-
-포트폴리오 사이트
+배포 주소 : https://jiheon.vercel.app/
 
 ## ⚙️ 기술 스택
 
