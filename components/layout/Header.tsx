@@ -23,7 +23,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick = () => setMenuOpen(false);
+  const handleNavClick = (href: string) => {
+    setMenuOpen(false);
+
+    // 메뉴 닫힌 후 스크롤
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: "smooth" });
+    }, 200); // 애니메이션 duration과 맞춤 (0.2s)
+  };
 
   return (
     <header
@@ -92,7 +100,10 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  onClick={handleNavClick}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(href);
+                  }}
                   className="text-(--text-sub) hover:text-(--text) transition-colors py-1"
                 >
                   {label}
