@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Tailwind v4: dark mode class 전략 (.dark 클래스 기반) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind v4: font 토큰 등록 → font-display, font-body 유틸 클래스 자동 생성 */
+@theme {
+  --font-display: var(--font-dm-serif), "DM Serif Display", serif;
+  --font-body:
+    var(--font-pretendard), "Pretendard Variable", "Pretendard", sans-serif;
+}
+
+/* 라이트 모드 CSS 변수 */
+:root {
+  --bg: #fdfaf4;
+  --bg-sub: #f5f0e8;
+  --text: #1c1917;
+  --text-sub: #78716c;
+  --accent: #c17b2f;
+  --border: #e7dfd3;
+}
+
+/* 다크 모드 CSS 변수 */
+.dark {
+  --bg: #141210;
+  --bg-sub: #1e1b18;
+  --text: #f5f0e8;
+  --text-sub: #a8a29e;
+  --accent: #e09a4a;
+  --border: #2c2824;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
