@@ -30,7 +30,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
   if (!active || !payload?.length) return null;
   return (
     <div
-      className="px-3 py-2 rounded-lg text-xs font-body"
+      className="px-3 py-1 rounded-lg text-xs font-body"
       style={{
         background: "var(--bg-sub)",
         border: "1px solid var(--border)",
@@ -112,6 +112,7 @@ export default function ViewCounter() {
             <Tooltip
               content={<CustomTooltip />}
               cursor={{ fill: "transparent" }}
+              position={{ y: 5.5 }}
             />
             <Bar dataKey="count" fill={colors.accent} radius={[3, 3, 0, 0]} />
           </BarChart>
