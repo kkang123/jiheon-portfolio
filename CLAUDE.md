@@ -122,6 +122,15 @@ jiheon-portfolio/
 - GitHub 링크
 - 간단한 소개 문구
 
+### 방문자 카운터 (Supabase)
+
+- DB: Supabase `daily_views` 테이블 (date, count)
+- API: `app/api/views/route.ts` Route Handler에서만 DB 접근
+- total은 별도 컬럼 없이 `sum(count)` 쿼리로 계산 (동기화 문제 방지)
+- 최근 5일 데이터는 `order by date desc limit 5` 쿼리로 조회
+- 환경변수: `SUPABASE_URL`, `SUPABASE_ANON_KEY` (.env.local)
+- RLS 적용으로 클라이언트 직접 접근 차단
+
 ---
 
 ## 컴포넌트 작성 규칙
