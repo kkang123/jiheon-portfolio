@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import { type Project } from "@/constants/projects";
 import TechBadge from "./TechBadge";
 import GithubIcon from "@/components/ui/GithubIcon";
+import { PROJECT_DETAILS } from "@/constants/projectDetails";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -51,6 +52,15 @@ export default function SubProjectCard({
           <motion.div
             key={project.slug}
             variants={cardVariants}
+            onMouseEnter={() => {
+              const detail = PROJECT_DETAILS.find(
+                (d) => d.slug === project.slug,
+              );
+              detail?.images?.forEach((src) => {
+                const img = new window.Image();
+                img.src = src;
+              });
+            }}
             onClick={() => onSelect(project)}
             className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-xl border border-(--border) bg-(--bg-sub) hover:border-(--accent) transition-colors cursor-pointer"
           >
