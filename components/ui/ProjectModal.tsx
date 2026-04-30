@@ -67,7 +67,7 @@ function ModalContent({
 
           {/* 링크 버튼 */}
           {(project.links.github ||
-            project.links.deplyUrl ||
+            project.links.deployUrl ||
             project.links.figma) && (
             <div className="flex flex-wrap gap-2 mt-3">
               {project.links.github && (
@@ -81,9 +81,9 @@ function ModalContent({
                   GitHub
                 </a>
               )}
-              {project.links.deplyUrl && (
+              {project.links.deployUrl && (
                 <a
-                  href={project.links.deplyUrl}
+                  href={project.links.deployUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-(--border) text-xs font-body text-(--text-sub) hover:text-(--accent) hover:border-(--accent) transition-colors"
@@ -168,10 +168,10 @@ function ModalContent({
             </div>
           )}
 
-          {/* 기술적 도전 & 해결 */}
+          {/* 트러블 슈팅 */}
           {(detail?.challenges?.length ?? 0) > 0 && (
             <div>
-              <SectionTitle>기술적 도전 &amp; 해결</SectionTitle>
+              <SectionTitle>트러블 슈팅</SectionTitle>
               <div className="flex flex-col gap-4">
                 {detail!.challenges!.map((challenge, i) => (
                   <div
