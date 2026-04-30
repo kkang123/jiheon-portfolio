@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import TechBadge from "./TechBadge";
 import GithubIcon from "@/components/ui/GithubIcon";
 import type { Project } from "@/constants/projects";
+import { PROJECT_DETAILS } from "@/constants/projectDetails";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,8 +14,18 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const handleMouseEnter = () => {
+    // 추가
+    const detail = PROJECT_DETAILS.find((d) => d.slug === project.slug);
+    detail?.images?.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  };
+
   return (
     <div
+      onMouseEnter={handleMouseEnter}
       onClick={onClick}
       className={`group flex flex-col rounded-2xl border border-(--border) bg-(--bg-sub) overflow-hidden hover:-translate-y-1 transition-transform duration-200 ${onClick ? "cursor-pointer hover:-translate-y-1" : "cursor-default"}`}
     >
