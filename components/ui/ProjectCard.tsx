@@ -1,21 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
+import TechBadge from "./TechBadge";
 import GithubIcon from "@/components/ui/GithubIcon";
 import type { Project } from "@/constants/projects";
 
 interface ProjectCardProps {
   project: Project;
+  onClick?: () => void;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
-    <div className="group flex flex-col rounded-2xl border border-(--border) bg-(--bg-sub) overflow-hidden hover:-translate-y-1 transition-transform duration-200">
+    <div
+      onClick={onClick}
+      className={`group flex flex-col rounded-2xl border border-(--border) bg-(--bg-sub) overflow-hidden hover:-translate-y-1 transition-transform duration-200 ${onClick ? "cursor-pointer hover:-translate-y-1" : "cursor-default"}`}
+    >
       {/* 프로젝트 이미지 */}
       <div className="relative w-full aspect-video bg-(--bg) overflow-hidden">
-        {project.imageUrl ? (
+        {project.thumbnail ? (
           <Image
-            src={project.imageUrl}
+            src={project.thumbnail}
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -60,29 +67,26 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         {/* 기술 스택 뱃지 */}
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="px-2.5 py-1 text-xs font-body rounded-full border border-(--border) text-(--text-sub)"
-            >
-              {tech}
-            </span>
+            <TechBadge key={tech} tech={tech} />
           ))}
         </div>
 
         {/* 링크 버튼 */}
-        <div className="flex gap-3 pt-2">
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs font-body text-(--text-sub) hover:text-(--accent) transition-colors"
-          >
-            <GithubIcon size={14} />
-            GitHub
-          </a>
-          {project.deployUrl && (
+        <div className="flex gap-3 pt-2" onClick={(e) => e.stopPropagation()}>
+          {project.links.github && (
             <a
-              href={project.deployUrl}
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-body text-(--text-sub) hover:text-(--accent) transition-colors"
+            >
+              <GithubIcon size={14} />
+              GitHub
+            </a>
+          )}
+          {project.links.deployUrl && (
+            <a
+              href={project.links.deployUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-xs font-body text-(--text-sub) hover:text-(--accent) transition-colors"
