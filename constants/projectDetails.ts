@@ -20,7 +20,7 @@ export interface ProjectDetail {
 
 // main
 export const PROJECT_DETAILS: ProjectDetail[] = [
-  // slug를 key로 projects.ts의 프로젝트와 연결됩니다.
+  // slug를 key로 projects.ts의 프로젝트와 연결
   {
     slug: "banbok",
     images: [
@@ -99,9 +99,15 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         solution:
           "AnimatePresence + motion.div로 교체. AnimatePresence가 언마운트 타이밍을 가로채 exit 애니메이션(height: auto → 0, opacity: 1 → 0)이 끝날 때까지 DOM을 유지한다. motion.div에 overflow-hidden을 추가해 height 애니메이션 중 내용이 삐져나오는 것을 방지했다.",
       },
+      {
+        problem:
+          "모달이 열리는 시점에 처음으로 이미지를 fetch하는 구조라, 첫 로드 시 최대 583ms이상의 지연들이 발생하는 경우가 있었다.  ",
+        solution:
+          "그래서 모달이 열리기 전에 카드에 마우스 hover 시 해당 프로젝트 이미지를 미리 preload하도록 구현했다. ProjectCard와 SubProjectCard 각각의 onMouseEnter 이벤트에서 new window.Image()로 이미지를 fetch해 브라우저 캐시에 저장해두고, 모달이 열릴 때는 캐시에서 즉시 표시되도록 했고 Network 탭 기준 개선 전 최대 583ms → 개선 후 6~11ms(캐시 히트)로 단축됐다. 페이지 초기 로드에는 영향 없이 hover 타이밍을 활용한 lazy preload 방식이다.",
+      },
     ],
     learnings:
-      "포트폴리오 사이트 자체가 기술 스택의 증명이 된다는 것을 체감했다.\n\nSSR 환경에서 클라이언트 전용 상태(theme, localStorage)를 다룰 때 hydration 문제를 반드시 고려해야 한다. useTheme()의 theme과 resolvedTheme 차이처럼 라이브러리 내부 동작을 이해하고 써야 예측 가능한 코드가 나온다는 것도 배웠다.\n\n조건부 렌더링(&&)과 AnimatePresence의 차이를 통해 'CSS transition은 DOM이 존재해야 동작한다'는 근본 원리를 이해했다. 단순히 애니메이션 라이브러리를 쓰는 것을 넘어 왜 AnimatePresence가 필요한지 설명할 수 있게 됐다.\n\n또한 이번 기회에 Supabase를 통해 DB를 활용하여 구현할 수 있었다. 단순한 카운팅 기능이지만 Vercel 서버리스 환경에서 메모리가 휘발되는 문제를 인지하고 DB 영속성 저장소를 선택하는 과정, 배열/큐 방식 대신 날짜를 기본키로 분리하는 관계형 DB 설계, total을 별도 컬럼 대신 sum(count) 집계 쿼리로 계산해 동기화 문제를 방지하는 방식까지 하나의 기능을 설계하면서 여러 기술적 판단을 직접 내려봤다. Next.js Route Handler와 RLS를 조합해 클라이언트 직접 접근을 차단하는 보안 설계도 함께 경험했다.",
+      "포트폴리오 사이트 자체가 기술 스택의 증명이 된다는 것을 체감했다.\n\nSSR 환경에서 클라이언트 전용 상태(theme, localStorage)를 다룰 때 hydration 문제를 반드시 고려해야 한다. useTheme()의 theme과 resolvedTheme 차이처럼 라이브러리 내부 동작을 이해하고 써야 예측 가능한 코드가 나온다는 것도 배웠다.\n\n조건부 렌더링(&&)과 AnimatePresence의 차이를 통해 'CSS transition은 DOM이 존재해야 동작한다'는 근본 원리를 이해했다. 단순히 애니메이션 라이브러리를 쓰는 것을 넘어 왜 AnimatePresence가 필요한지 설명할 수 있게 됐다.\n\n배포 환경에서 모달창을 열었을 때 이미지 로딩이 로컬보다 느리다는 것을 직접 체감한 뒤, 브라우저 캐시 동작 방식을 학습하고 preload 개념을 처음 적용해봤다. hover 같은 사용자 인터랙션 타이밍을 활용해 미리 리소스를 fetch 해두는 패턴이 UX개선에 효과적이라는 것을 체감했다.\n\n또한 이번 기회에 Supabase를 통해 DB를 활용하여 구현할 수 있었다. 단순한 카운팅 기능이지만 Vercel 서버리스 환경에서 메모리가 휘발되는 문제를 인지하고 DB 영속성 저장소를 선택하는 과정, 배열/큐 방식 대신 날짜를 기본키로 분리하는 관계형 DB 설계, total을 별도 컬럼 대신 sum(count) 집계 쿼리로 계산해 동기화 문제를 방지하는 방식까지 하나의 기능을 설계하면서 여러 기술적 판단을 직접 내려봤다. Next.js Route Handler와 RLS를 조합해 클라이언트 직접 접근을 차단하는 보안 설계도 함께 경험했다.",
   },
   {
     slug: "loaking",
