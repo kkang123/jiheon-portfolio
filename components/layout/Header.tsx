@@ -30,7 +30,7 @@ export default function Header() {
     setTimeout(() => {
       const target = document.querySelector(href);
       target?.scrollIntoView({ behavior: "smooth" });
-    }, 200); // 애니메이션 duration과 맞춤 (0.2s)
+    }, 200);
   };
 
   return (
@@ -76,8 +76,8 @@ export default function Header() {
           <button
             className="md:hidden w-9 h-9 flex items-center justify-center rounded-md text-(--text-sub) hover:text-(--text) hover:bg-(--bg-sub) transition-colors"
             onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"} // ✅ 동적 변경
-            aria-expanded={menuOpen} // ✅ 상태 명시
+            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -85,7 +85,7 @@ export default function Header() {
       </div>
 
       {/* 모바일 메뉴 */}
-      {/* ✅ AnimatePresence로 슬라이드 애니메이션 */}
+      {/* AnimatePresence로 슬라이드 애니메이션 적용 */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

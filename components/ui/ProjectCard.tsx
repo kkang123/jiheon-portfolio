@@ -15,7 +15,6 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   const handleMouseEnter = () => {
-    // 추가
     const detail = PROJECT_DETAILS.find((d) => d.slug === project.slug);
     detail?.images?.forEach((src) => {
       const img = new window.Image();
