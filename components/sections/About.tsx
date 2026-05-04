@@ -5,20 +5,21 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const KEYWORDS: { title: string; description: string }[] = [
-  /*
   {
     title: "성장",
-    description: "새로운 기술을 배우는 것을 즐기며, 매일 조금씩 더 나은 개발자가 되기 위해 노력합니다.",
+    description:
+      "새로운 기술을 배우는 것을 즐기며, 지금은 그 기술을 실제 프로젝트에 적용하고 개선하는 데 집중하고 있습니다. 단순히 사용하는 것을 넘어 왜 이 기술이 필요한지를 이해하며 학습하고, 기능 구현에 그치지 않고 사용자 경험까지 고민하며 개발합니다.",
   },
   {
     title: "협업",
-    description: "팀원들과의 소통을 중요하게 생각하며, 함께 더 좋은 결과물을 만드는 것에 보람을 느낍니다.",
+    description:
+      "팀 프로젝트에서 리더 역할을 맡아 팀원들과 소통하며 기술적으로 부족한 부분과 전체 프로젝트 흐름을 이끈 경험이 있습니다. 프론트엔드를 주도적으로 담당하며 백엔드 개발자와 여러 차례 협업했고, 예상치 못한 이슈가 생겨도 함께 원인을 분석하고 해결하며 성장해왔습니다.",
   },
   {
-    title: "사용자 경험",
-    description: "코드의 동작뿐 아니라 사용자가 실제로 느끼는 경험까지 고민하며 개발합니다.",
+    title: "코드 품질",
+    description:
+      "나만 이해하는 코드보다 팀원 누구나 읽기 쉬운 코드를 지향합니다. 완벽할 수는 없지만, 널리 통용되는 패턴과 컨벤션을 따르며 유지보수하기 좋은 구조를 꾸준히 고민합니다.",
   },
-  */
 ];
 
 export default function About() {
@@ -69,42 +70,7 @@ export default function About() {
               ))
             ) : (
               <div className="p-5 rounded-xl bg-(--bg-sub) border border-(--border) border-dashed flex flex-col gap-6">
-                <div>
-                  <h3 className="font-body font-semibold text-(--text) text-sm mb-2">
-                    UX 중심 사고
-                  </h3>
-                  <p className="text-(--text-sub) font-body text-sm leading-relaxed">
-                    저는 사용자가 서비스를 이용할 때 무엇이 불편한지, 어떻게
-                    하면 더 직관적일지를 고민하며 개발합니다. 기능 구현에 그치지
-                    않고 사용자 경험을 고려한 인터페이스를 만드는 것을 중요하게
-                    생각합니다.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-body font-semibold text-(--text) text-sm mb-2">
-                    코드 품질
-                  </h3>
-                  <p className="text-(--text-sub) font-body text-sm leading-relaxed">
-                    코드를 작성할 때는 나만 이해하는 코드보다 팀원 누구나 읽기
-                    쉬운 코드를 지향하며, 완벽할 수는 없지만, 널리 통용되는
-                    패턴과 컨벤션을 따르려 노력하며 유지보수하기 좋은 구조를
-                    고민합니다.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-body font-semibold text-(--text) text-sm mb-2">
-                    지속적 학습
-                  </h3>
-                  <p className="text-(--text-sub) font-body text-sm leading-relaxed">
-                    새로운 기술을 학습하고 실제 프로젝트에 적용해보는 과정에서
-                    웹 개발의 흥미를 느끼고 있습니다. 프론트엔드를 주도적으로
-                    담당하며 백엔드 개발자와 협업한 경험이 많아, API 연동
-                    과정에서 발생하는 문제를 함께 분석하고 해결하는 데
-                    익숙합니다.
-                  </p>
-                </div>
+                KEYWORDS 배열에 키워드를 추가칸
               </div>
             )}
           </motion.div>
@@ -115,6 +81,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="flex items-center justify-center h-full"
           >
             {!imgError ? (
               <div className="relative w-full aspect-square max-w-sm mx-auto rounded-2xl overflow-hidden border border-(--border)">
