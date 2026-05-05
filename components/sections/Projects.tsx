@@ -2,13 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 
 import { PROJECTS, SUB_PROJECTS, type Project } from "@/constants/projects";
 import ProjectCard from "@/components/ui/ProjectCard";
 import SubProjectCard from "../ui/SubProjectCard";
 import ProjectModal from "@/components/ui/ProjectModal";
-import GithubIcon from "@/components/ui/GithubIcon";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -63,9 +61,9 @@ export default function Projects() {
         ) : (
           <div className="mb-20 p-10 rounded-2xl border border-dashed border-(--border) text-center">
             <p className="text-(--text-sub) font-body text-sm">
-              TODO: constants/projects.ts의 PROJECTS 배열에
+              constants/projects.ts의 PROJECTS 배열
               <br />
-              본인 프로젝트를 추가해주세요.
+              프로젝트를 추가
             </p>
           </div>
         )}
