@@ -159,7 +159,7 @@ function ModalContent({
                     <p className="text-sm font-body font-semibold text-(--text) mb-0.5">
                       {feature.title}
                     </p>
-                    <p className="text-sm font-body text-(--text-sub) leading-relaxed">
+                    <p className="text-sm font-body text-(--text-sub) leading-relaxed whitespace-pre-line">
                       {feature.description}
                     </p>
                   </div>
