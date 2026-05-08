@@ -23,9 +23,17 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     slug: "banbok",
-    title: "반복",
-    description: "프로젝트 설명",
-    techStack: ["React", "NextJs"],
+    title: "반복 (Banbok)",
+    description:
+      "해결한 코딩 테스트 링크를 등록하여 일정 주기로 메일을 발송해 반복 학습을 도와주는 웹 서비스",
+    techStack: [
+      "React",
+      "NextJs",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Cheerio",
+    ],
     links: {
       github: "https://github.com/kkang123/banbok/tree/main/apps/frontend",
       deployUrl: "https://banbok-coding.vercel.app/",
@@ -42,15 +50,14 @@ export const PROJECTS: Project[] = [
     slug: "for-dogs-refactor",
     title: "For Dogs(Refactor)",
     description: "프로젝트 설명",
-    techStack: ["React", "..."],
+    techStack: ["React", "TypeScript", "Tailwind CSS", "React Query", "Recoil"],
     links: {
-      github: "https://github.com/kkang123/for-dogs-services",
+      github: "https://github.com/ForDogs/for-dogs-services",
       deployUrl: "https://www.fordogs.store/",
     },
     thumbnail: "/assets/projects/For Dogs_team.jpg",
     period: "2024.05 ~ 2024.10",
     role: "프론트엔드 개발",
-
     type: "main",
     team: "team",
     teamSize: 2,
@@ -76,15 +83,15 @@ export const PROJECTS: Project[] = [
   {
     slug: "jubging",
     title: "줍깅",
-    description: "프로젝트 설명",
-    techStack: ["React", "..."],
+    description: "플로깅 경험을 공유하고 추천 코스를 함께 나누는 SNS 플랫폼",
+    techStack: ["React", "JavaScript", "Recoil", "styled-components", "Axios"],
     links: {
-      github: "https://github.com/kkang123/jubging",
+      github: "https://github.com/FRONTENDSCHOOL7/jubging",
       deployUrl: "https://jubging.netlify.app/",
     },
     thumbnail: "/assets/projects/jubging.jpg",
     period: "2023.10 ~ 2023.11",
-    role: "프론트엔드 개발",
+    role: "프론트엔드 개발 (팀장)",
 
     type: "main",
     team: "team",
@@ -119,7 +126,7 @@ export const SUB_PROJECTS: Project[] = [
   {
     slug: "loaking",
     title: "로아왕",
-    description: "프로젝트 설명",
+    description: "스마일 게이트 공공 API 데이터를 이용하여 ",
     techStack: ["Next.js", "TypeScript"],
     links: {
       github: "https://github.com/kkang123/loaking",
