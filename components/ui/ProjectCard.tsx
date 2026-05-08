@@ -26,7 +26,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     <div
       onMouseEnter={handleMouseEnter}
       onClick={onClick}
-      className={`group flex flex-col rounded-2xl border border-(--border) bg-(--bg-sub) overflow-hidden hover:-translate-y-1 transition-transform duration-200 ${onClick ? "cursor-pointer hover:-translate-y-1" : "cursor-default"}`}
+      className={`h-full group flex flex-col rounded-2xl border border-(--border) bg-(--bg-sub) overflow-hidden hover:-translate-y-1 transition-transform duration-200 ${onClick ? "cursor-pointer hover:-translate-y-1" : "cursor-default"}`}
     >
       {/* 프로젝트 이미지 */}
       <div className="relative w-full aspect-video bg-(--bg) overflow-hidden">
@@ -76,9 +76,14 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 
         {/* 기술 스택 뱃지 */}
         <div className="flex flex-wrap gap-2">
-          {project.techStack.map((tech) => (
+          {project.techStack.slice(0, 4).map((tech) => (
             <TechBadge key={tech} tech={tech} />
           ))}
+          {project.techStack.length > 4 && (
+            <span className="text-xs font-body px-2.5 py-1 rounded-full border border-(--border) text-(--text-sub)">
+              +{project.techStack.length - 4}
+            </span>
+          )}
         </div>
 
         {/* 링크 버튼 */}
