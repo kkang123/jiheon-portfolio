@@ -22,6 +22,25 @@ export interface ProjectDetail {
 export const PROJECT_DETAILS: ProjectDetail[] = [
   // slug를 key로 projects.ts의 프로젝트와 연결
   {
+    slug: "",
+    images: [],
+    background: "",
+    goals: [],
+    features: [
+      {
+        title: "",
+        description: "",
+      },
+    ],
+    challenges: [
+      {
+        problem: "",
+        solution: "",
+      },
+    ],
+    learnings: "",
+  },
+  {
     slug: "jubging",
     images: [
       "https://github.com/user-attachments/assets/1c3f9926-de05-4cb2-8ba2-744450ba912d",
@@ -87,23 +106,83 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       "첫 React 팀 프로젝트이자 팀장 역할을 동시에 맡으면서, 코드 작성 못지않게 협업 환경 설계가 프로젝트 품질에 얼마나 큰 영향을 미치는지 깨달았고, 피그마로 와이어프레임부터 목업, 인터랙티브 프로토타입까지 직접 제작하면서, 개발 전 화면 구조 설계부터 디자인, 화면 흐름 연결까지 전 과정을 처음으로 경험했다.\n\n카카오맵 API 이벤트 시스템(click, mousemove, rightclick)을 직접 다루면서 외부 라이브러리 문서를 읽고 적용하는 경험을 처음으로 제대로 해봤다. drawingFlag 변수로 드로잉 상태를 관리하고 isButtonClicked로 버튼 활성화를 제어하는 등, 단순히 동작하는 코드를 넘어 상태 흐름을 설계하는 감각을 이 프로젝트에서 처음 익혔다.\n\n백엔드 API 제약을 JSON 직렬화로 우회하면서, 프론트엔드가 데이터 구조 설계에도 능동적으로 개입해야 한다는 것을 배웠다. AI 도움을 받아 완성했지만 코드를 직접 분석하고 동작 원리를 이해하는 과정에서 실력이 쌓였다는 것을 나중에야 깨달았다.",
   },
   {
-    slug: "",
-    images: [],
-    background: "",
-    goals: [],
+    slug: "for-dogs",
+    images: [
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/e91633ca-32c7-4198-b05b-686fbbda598e", // 메인
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/35aaa22f-a34f-40d6-9fe7-3ae293fbc7b4", // 로그인·로그아웃
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/8b871483-7ecb-4cb5-a35e-55fb42586ef9", // 회원가입
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/7b401b0b-6ac6-4c4e-9d56-f5d7c93cd6da", // 홈·상품 상세보기
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/26a319b9-de87-4e36-956e-0f9ce6322d71", // 카테고리·정렬
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/5b7b9b10-229c-400f-9e95-c19142326f95", // 장바구니 추가
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/43474fb5-a4d4-4cb3-9c77-6f45b0e64bea", // 장바구니 수정·삭제
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/6992c3b4-b950-4e63-93fa-14a213fd6dd8", // 상품 결제
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/5ab14ef6-e812-4287-ad22-05473beeda37", // 주문 취소
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/32c84dd7-dcd7-4eee-a9cd-d3ca05f623a3", // 상품 등록
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/1b54b590-1b94-4991-a5db-dcecbbb9b663", // 상품 수정·삭제
+      "https://github.com/kkang123/ForDogs_Shop/assets/85389685/3e07e9f3-e64a-4173-848d-7cfab482bdcd", // 판매 내역 관리
+    ],
+    background:
+      "개인 프로젝트이며, 반려견 용품 이커머스 서비스를 직접 설계하고 구현하면서 인증·결제·파일 업로드 등 실서비스 핵심 도메인을 경험하려 했다. Firebase를 백엔드로 활용해 서버 없이 풀스택에 준하는 기능을 구현하고, 추후 REST API 전환 리팩토링의 기반이 되는 원본 프로젝트를 완성하는 것을 목표로 했다.",
+    goals: [
+      "Firebase Auth·Firestore·Storage만으로 인증·데이터·파일 관리 전 영역 직접 구현",
+      "구매자·판매자 역할 분리 및 ProtectRoute HOC 기반 접근 제어 설계",
+      "클라이언트 WebP 변환·무한 스크롤·LazyImage 등 성능 최적화 구현",
+      "Iamport 결제·카카오(Daum) 주소 API·SEO까지 완결된 커머스 플로우 구축",
+    ],
     features: [
       {
-        title: "",
-        description: "",
+        title: "Firebase Storage + 클라이언트 WebP 자동 변환 업로드",
+        description:
+          "상품 이미지 업로드 시 FileReader로 원본 파일을 읽어 Image 객체에 로드한 뒤, canvas.drawImage → canvas.toBlob('image/webp')으로 변환한 File 객체를 Firebase Storage에 uploadBytes로 저장했다. 변환 실패·컨텍스트 생성 실패를 각각 reject로 처리해 Promise 체이닝의 안전성을 확보했다. 최대 3장 제한은 files.length <= 3 조건으로 클라이언트에서 막았다.",
+      },
+      {
+        title: "Google 소셜 로그인 (signInWithRedirect + Firestore merge)",
+        description:
+          "GoogleAuthProvider에 prompt: 'select_account'를 설정한 뒤 signInWithRedirect로 리디렉션하고, 컴포넌트 마운트 시 getRedirectResult로 결과를 수신했다. 최초 로그인 시 Firestore users 컬렉션에 setDoc(merge: true)로 문서를 병합 저장해 소셜·이메일 계정 중복 생성을 방지했다.",
+      },
+      {
+        title: "구매자·판매자 탭 분리 로그인 및 역할 검증",
+        description:
+          "로그인 폼을 buyer·seller 탭으로 구분하고, signInWithEmailAndPassword 호출 전 Firestore에서 해당 이메일의 isSeller 값을 조회해 탭 역할과 불일치하면 로그인을 거부했다. ProtectRoute는 isPrivate·isProtected 플래그 조합으로 공개·구매자 전용·판매자 전용 라우트를 구분해 역할 불일치 시 홈으로 리다이렉트했다.",
+      },
+      {
+        title: "무한 스크롤 + 정렬 전환 시 캐시 초기화",
+        description:
+          "useInfiniteQuery와 useInView를 조합해 뷰포트 하단 도달 시 자동으로 fetchNextPage를 호출했다. 정렬 기준(최신순·가격순) 변경 시 기존 페이지 캐시가 남는 문제를 remove() + refetch() 순서로 해결해 sortType useEffect에서 실행했다. Firestore 쿼리는 orderBy(sortType) + limit(3) + startAfter(lastDoc)로 구성했다.",
+      },
+      {
+        title: "커스텀 LazyImage (IntersectionObserver 직접 구현)",
+        description:
+          "라이브러리 없이 useRef + IntersectionObserver로 LazyImage 컴포넌트를 구현했다. isIntersecting이 true가 될 때 img src에 실제 URL을 할당하고, 그 전까지는 undefined를 유지해 네트워크 요청을 지연시켰다. 컴포넌트 언마운트 시 observer.unobserve로 메모리 누수를 방지했다.",
+      },
+      {
+        title: "주문 그룹핑 + 판매자 5단계 상태 관리",
+        description:
+          "결제 성공 시 group_${timestamp} 형태의 groupid를 생성해 장바구니 내 각 상품을 별도 Firestore 문서로 저장하고 groupid로 연결했다. 구매자 프로필 페이지에서는 groupOrdersByGroupId로 주문을 묶어 하나의 결제 내역으로 표시하고 그룹별 총액을 산출했다. 판매자는 구매확인·발송대기·발송시작·주문취소·판매완료 5단계를 select + updateDoc으로 관리했다.",
       },
     ],
     challenges: [
       {
-        problem: "",
-        solution: "",
+        problem:
+          "canvas.toBlob은 비동기로 동작하지만 콜백 기반 API여서 여러 파일을 for...of로 순차 처리할 때 각 변환 결과를 await로 받을 수 없었다.",
+        solution:
+          "convertToWebP 함수를 new Promise<File>으로 래핑하고, canvas.toBlob 콜백 내에서 resolve(webpFile) / reject(error)를 호출해 async/await 체인으로 편입했다. 각 파일을 for...of로 순차 await해 downloadURLs 배열에 순서대로 쌓았다.",
+      },
+      {
+        problem:
+          "정렬 기준을 변경해도 useInfiniteQuery가 이전 페이지 데이터를 캐시로 유지해 새 정렬 결과 첫 페이지에 이전 데이터가 섞여 표시됐다.",
+        solution:
+          "sortType 변경 useEffect에서 remove()로 쿼리 캐시를 완전히 삭제한 뒤 refetch()를 호출하는 패턴을 적용했다. remove 없이 refetch만 호출하면 stale 데이터가 유지되므로 순서가 중요했다.",
+      },
+      {
+        problem:
+          "Cart 페이지에서 Firestore 장바구니 데이터와 localStorage 장바구니 데이터를 별도 useEffect로 각각 읽어 setCart를 두 번 호출하면 마지막 실행 결과가 앞 결과를 덮어쓰는 충돌이 발생했다.",
+        solution:
+          "Firestore fetch를 우선 소스로 정하고, Firestore 문서가 존재하면 해당 데이터를 상태로 설정했다. localStorage는 Firestore 미접속 상태(비로그인·오프라인)에서만 fallback으로 사용하는 역할로 분리해 우선순위를 명확히 했다.",
       },
     ],
-    learnings: "",
+    learnings:
+      "처음부터 끝까지 혼자 개발한 첫 개인 프로젝트였다. 나만의 생각과 고뇌, 그리고 거기서 배울 수 있는 해결 능력 등을 많이 경험해서 좋았던 프로젝트였다. 기술적으로는 Firebase SDK만으로 인증·Firestore·Storage를 연결하면서 실시간 구독(onAuthStateChanged)과 단발성 쿼리(getDocs, getDoc)의 사용 시점을 구분하는 감각을 익혔고, DB의 역할을 간접적으로 체험했다. onAuthStateChanged를 여러 컴포넌트에서 중복 구독하면 불필요한 Firestore 읽기가 발생한다는 것을 경험했고, 이를 Context로 끌어올려 단일 구독으로 정리하는 구조의 필요성을 깨달았다.\n\ncanvas API로 WebP 변환을 직접 구현하면서 Promise 래핑 패턴과 비동기 콜백 API를 async/await 체인에 편입하는 방법을 체득해 최적화 기법을 배웠고, 변환 실패 경로(컨텍스트 생성 실패, blob 변환 실패)를 각각 분기해야 한다는 점도 직접 디버깅하면서 확인했다.\n\nuseInfiniteQuery의 캐시 생명주기를 이해하지 못하면 정렬 전환 시 오염된 데이터가 표시되는 버그가 발생한다는 것을 경험했다. remove + refetch 패턴이 단순하지만 캐시 완전 초기화에 가장 직접적인 해법이라는 것을 확인했다.\n\n추후 REST API 전환 리팩토링을 진행하면서 Firebase가 자동으로 처리해주던 토큰 갱신·인증 상태 동기화를 직접 Axios 인터셉터로 구현하게 됐고, Firebase가 얼마나 많은 복잡도를 추상화하고 있었는지를 체감했다.",
   },
   {
     slug: "for-dogs-refactor",

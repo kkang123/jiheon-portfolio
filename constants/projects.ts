@@ -68,7 +68,13 @@ export const PROJECTS: Project[] = [
     slug: "for-dogs",
     title: "For Dogs",
     description: "프로젝트 설명",
-    techStack: ["React", "..."],
+    techStack: [
+      "React",
+      "TypeScript",
+      "Firebase",
+      "Tailwind CSS",
+      "React Query",
+    ],
     links: {
       github: "https://github.com/kkang123/ForDogs_Shop",
       deployUrl: "https://fordogs-shop.vercel.app/",
